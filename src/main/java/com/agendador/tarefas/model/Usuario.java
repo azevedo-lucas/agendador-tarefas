@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
@@ -25,8 +27,11 @@ public class Usuario {
     @Column(name = "senha", nullable = false)
     private String senha;
 
-    @Column(name = "data_cadastro")
+    @Column(name = "data_cadastro", nullable = false)
     private LocalDateTime dataCadastro;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Tarefa> tarefas = new ArrayList<>();
 
     private boolean ativo = true;
 
